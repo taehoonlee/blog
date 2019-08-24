@@ -17,7 +17,7 @@ layout: list
   <ul>
     <li class="date"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %-d, %Y" }}</time></li>
     <li class="title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
-    <li class="category"><a href="/category/{{ category }}" class="{{ color }}">{{ category }}</a></li>
+    <li class="category"><a href="/blog/category/{{ category }}" class="{{ color }}">{{ category }}</a></li>
   </ul>
 {% endfor %}
 </div>
@@ -30,7 +30,7 @@ layout: list
     <ul>
       <li class="date"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %-d, %Y" }}</time></li>
       <li class="title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
-      <li class="category"><a href="/category/{{ category }}/{{ post_subcategory }}">{{ post_subcategory }}</a></li>
+      <li class="category"><a href="/blog/category/{{ category }}/{{ post_subcategory }}">{{ post_subcategory }}</a></li>
     </ul>
   {% endfor %}
   </div>
