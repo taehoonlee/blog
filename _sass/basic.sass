@@ -1,5 +1,5 @@
 body
-  font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", "Roboto", sans-serif
+  font-family: $font-family-kr, -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", sans-serif
   font-size: 16px
   font-size: $font-size
   font-weight: $font-weight
@@ -11,27 +11,69 @@ body
 body, blockquote, figure
   margin: 0
 
-h1, h2, h3, h4, h5, h6
+h1, h2, h3, h4, h5, h6, div, time
+  font-family: $font-family, $font-family-kr
   font-weight: $heading-weight
+
+div.archive
+  width: 100%
+  margin: 0 0 5em 0
+
+div.archive ul
+  width: 100%
+  padding: 0
+  clear: left
+  list-style-type: none
+
+div.archive ul li
+  float: left
+  padding: 0.25em 0
+
+div.archive ul li.date
+  width: 14%
+
+div.archive ul li.title
+  width: 66%
+  a
+    color: #333
+    &.selected, &:hover
+      color: $color5
+
+div.archive ul li.category
+  width: 20%
+  text-align: right
+  a.color1
+    color: $color1
+  a.color2
+    color: $color2
+  a.color3
+    color: $color3
+  a.color4
+    color: $color4
+  a
+    &.selected, &:hover
+      color: $color5
 
 b, strong, th
   font-weight: $font-weight + 200
 
+time
+  color: #999
+
 a
   color: inherit
   text-decoration: inherit
-  transition: color .2s
+  transition: color .3s
   &.selected, &:hover
     color: reduce(100)
 
 article a
   color: $link-color
+  &.selected, &:hover
+    color: $color5
 
 article header a, article footer a
   color: inherit
-
-header time
-  color: reduce(100)
 
 hr
   border: 1px solid reduce(30)
@@ -65,7 +107,8 @@ pre
   background: rgba(34, 34, 34, 0.8)
   color: white
   border-radius: 2px
-  font-size: .8em
+  font-size: .9em
+  line-height: 1.4em
   margin: 1.5em 0
   padding: .8em 1.2em
   overflow-x: auto
@@ -77,3 +120,79 @@ p code
   border-radius: 2px
   margin: 0 .1em
   padding: .2em .4em
+
+/* Logo */
+/* css reference: http://brenna.github.io/csshexagon/ */
+/* image reference: https://data.1freewallpapers.com/detail/blue-and-green-triangles.jpg */
+
+.hexagon
+  position: relative
+  width: 60px
+  height: 34.64px
+  /* margin: 17.32px 0; */
+  margin: 25px auto
+  background-image: url("images/blue-and-green-triangles.jpg")
+  background-size: auto 50px
+  background-position: center
+
+.hexText
+  position: absolute
+  top: -78%
+  left: 0
+  width: 100%
+  height: 200%
+  z-index: 5
+  color: #e4f5f6
+  font-size: 50px
+  font-family: 'Paytone One'
+  font-weight: 400
+  text-align: center
+  vertical-align: middle
+
+.hexTop, .hexBottom
+  position: absolute
+  z-index: 1
+  width: 42px
+  height: 42px
+  overflow: hidden
+  -webkit-transform: scaleY(0.5774) rotate(-45deg)
+  -ms-transform: scaleY(0.5774) rotate(-45deg)
+  transform: scaleY(0.5774) rotate(-45deg)
+  background: inherit
+  left: 8.79px
+
+/*counter transform the bg image on the caps*/
+.hexTop:after, .hexBottom:after
+  content: ""
+  position: absolute
+  width: 60.0000px
+  height: 34.64101615137755px
+  -webkit-transform:  rotate(45deg) scaleY(1.7321) translateY(-17.3205px)
+  -ms-transform:      rotate(45deg) scaleY(1.7321) translateY(-17.3205px)
+  transform:          rotate(45deg) scaleY(1.7321) translateY(-17.3205px)
+  -webkit-transform-origin: 0 0
+  -ms-transform-origin: 0 0
+  transform-origin: 0 0
+  background: inherit
+
+.hexTop
+  top: -21.2132px
+
+.hexTop:after
+  background-position: center top
+
+.hexBottom
+  bottom: -21.2132px
+
+.hexBottom:after
+  background-position: center bottom
+
+.hexagon:after
+  content: ""
+  position: absolute
+  top: 0.0000px
+  left: 0
+  width: 60.0000px
+  height: 34.6410px
+  z-index: 2
+  background: inherit

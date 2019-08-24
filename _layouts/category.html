@@ -1,0 +1,27 @@
+---
+layout: list
+---
+{% assign categories = page.title | split: "/" %}
+{% assign category = categories[0] %}
+{% assign subcategory = categories[1] %}
+<header><h1>In {{ page.title }}</h1></header>
+<div class="archive">
+{% for post in site.categories[category] %}
+  {% assign post_subcategory = post.categories[1] %}
+  {% if subcategory == undefined %}
+    <ul>
+      <li class="date"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %-d, %Y" }}</time></li>
+      <li class="title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
+      <li class="category"><a href="/category/{{ category }}/{{ post_subcategory }}">{{ post_subcategory }}</a></li>
+    </ul>
+  {% else %}
+    {% if post_subcategory == subcategory %}
+    <ul>
+      <li class="date"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %-d, %Y" }}</time></li>
+      <li class="title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
+      <li class="category"><a href="/category/{{ category }}/{{ post_subcategory }}">{{ post_subcategory }}</a></li>
+    </ul>
+    {% endif %}
+  {% endif %}
+{% endfor %}
+</div>

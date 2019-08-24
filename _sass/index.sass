@@ -1,8 +1,16 @@
+$color1: #0cadbb !default
+$color2: #49b0b9 !default
+$color3: #3fb894 !default
+$color4: #8fbf73 !default
+$color5: #febf3d !default
 $font-size: calc(0.8rem + 0.25vw) !default
 $font-weight: 400 !default
+$font-family: "Raleway"
+$font-family-kr: "Noto Serif KR"
+$font-family-code: "Source Sans Pro"
 $heading-weight: 400 !default
 $line-height: 1.65 !default
-$link-color: #68f !default
+$link-color: $color1 !default
 $dark: #282828 !default
 $light: #ffffff !default
 
@@ -10,6 +18,11 @@ $light: #ffffff !default
   @return rgba(mix($dark, $light), $percent / 100)
 
 @import basic, highlight, layout, darkmode
+
+@import "https://fonts.googleapis.com/css?family=Raleway"
+@import "https://fonts.googleapis.com/css?family=Paytone+One"
+@import "https://fonts.googleapis.com/css?family=Noto+Serif+KR"
+@import "https://fonts.googleapis.com/css?family=Source+Sans+Pro"
 
 .light
   background: $light

@@ -1,24 +1,37 @@
 ---
-layout: default
+layout: list
 ---
-<article>
-  <header><h1>Posts</h1></header>
-  <ul class="archive">
-    {%- assign posts = paginator.posts | default: site.posts -%}
-    {% for post in posts %}
-    <li>
-      <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y-%m-%d" }}</time>
-      <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-    </li>
-    {% endfor %}
+{% assign categories = "engineering, thoughts" | split: ", " %}
+<header><h1>Recent Posts</h1></header>
+<div class="archive">
+{% for post in site.posts limit:5 %}
+  {% assign category = post.categories[0] %}
+  {% case category %}
+    {% when categories[0] %}
+      {% assign color = "color3" %}
+    {% when categories[1] %}
+      {% assign color = "color4" %}
+    {% else %}
+      {% assign color = "color2" %}
+  {% endcase %}
+  <ul>
+    <li class="date"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %-d, %Y" }}</time></li>
+    <li class="title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
+    <li class="category"><a href="category{{ category | relative_url }}" class="{{ color }}">{{ category }}</a></li>
   </ul>
-  {{ content }}
-</article>
+{% endfor %}
+</div>
 
-{% if paginator.total_pages > 1 %}
-<footer>
-  <a {% if paginator.previous_page %}class="gray" href="{{ paginator.previous_page_path | relative_url }}"{% else %}class="disabled"{% endif %}>« newer posts</a>
-  <span>page {{ paginator.page }} of {{ paginator.total_pages }}</span>
-  <a {% if paginator.next_page %}class="gray" href="{{ paginator.next_page_path | relative_url }}"{% else %}class="disabled"{% endif %}>older posts »</a>
-</footer>
-{% endif %}
+{% for category in categories %}
+  <header><h1>In {{ category }}</h1></header>
+  <div class="archive">
+  {% for post in site.categories[category] limit:5 %}
+    {% assign post_subcategory = post.categories[1] %}
+    <ul>
+      <li class="date"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %-d, %Y" }}</time></li>
+      <li class="title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
+      <li class="category"><a href="/category/{{ category }}/{{ post_subcategory }}">{{ post_subcategory }}</a></li>
+    </ul>
+  {% endfor %}
+  </div>
+{% endfor %}
