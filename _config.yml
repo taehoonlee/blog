@@ -9,6 +9,9 @@ dark_theme: false            # use the dark mode as default
 dark_header: true            # keep the header dark
 dark_footer: true           # keep the footer dark
 
+number_of_recent_posts: 10
+number_of_category_posts: 10
+
 comments:                    # embed disqus or isso comments
   disqus: "taehoonlee"
 
