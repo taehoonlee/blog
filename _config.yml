@@ -12,6 +12,10 @@ dark_footer: true           # keep the footer dark
 number_of_recent_posts: 10
 number_of_category_posts: 10
 
+category_names:
+ - "engineering"
+ - "thoughts"
+
 comments:                    # embed disqus or isso comments
   disqus: "taehoonlee"
 
