@@ -4,7 +4,7 @@ layout: list
 {% assign categories = "engineering, thoughts" | split: ", " %}
 <header><h1>Recent Posts</h1></header>
 <div class="archive">
-{% for post in site.posts limit:5 %}
+{% for post in site.posts limit:site.number_of_recent_posts %}
   {% assign category = post.categories[0] %}
   {% case category %}
     {% when categories[0] %}
@@ -17,7 +17,7 @@ layout: list
   <ul>
     <li class="date"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %-d, %Y" }}</time></li>
     <li class="title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
-    <li class="category"><a href="/blog/category/{{ category }}" class="{{ color }}">{{ category }}</a></li>
+    <li class="category"><a href="{{ 'category' | relative_url }}/{{ category }}" class="{{ color }}">{{ category }}</a></li>
   </ul>
 {% endfor %}
 </div>
@@ -25,12 +25,12 @@ layout: list
 {% for category in categories %}
   <header><h1>In {{ category }}</h1></header>
   <div class="archive">
-  {% for post in site.categories[category] limit:5 %}
+  {% for post in site.categories[category] limit:site.number_of_category_posts %}
     {% assign post_subcategory = post.categories[1] %}
     <ul>
       <li class="date"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %-d, %Y" }}</time></li>
       <li class="title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
-      <li class="category"><a href="/blog/category/{{ category }}/{{ post_subcategory }}">{{ post_subcategory }}</a></li>
+      <li class="category"><a href="{{ 'category' | relative_url }}/{{ category }}/{{ post_subcategory }}">{{ post_subcategory }}</a></li>
     </ul>
   {% endfor %}
   </div>
