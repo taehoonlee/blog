@@ -13,8 +13,8 @@ number_of_recent_posts: 10
 number_of_category_posts: 10
 
 category_names:
- - "engineering"
- - "thoughts"
+ - "tech"
+ - "misc"
 
 comments:                    # embed disqus or isso comments
   disqus: "taehoonlee"
