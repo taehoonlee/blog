@@ -8,7 +8,7 @@ layout: list
   <ul>
     <li class="date"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%b %-d, %Y" }}</time></li>
     <li class="title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
-    <li class="category"><a href="{{ 'category' | relative_url }}/{{ category }}" class="color{{ category | indexOf: site.category_names | plus: 3 }}">{{ category }}</a></li>
+    <li class="category"><a href="{{ 'category' | relative_url }}/{{ category }}" class="categorycolor{{ category | indexOf: site.category_names }}">{{ category }}</a></li>
   </ul>
 {% endfor %}
 </div>

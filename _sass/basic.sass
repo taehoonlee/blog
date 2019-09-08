@@ -33,35 +33,48 @@ div.archive ul li
   padding: 0.25em 0
 
 div.archive ul li.date
-  width: 14%
+  width: 16%
+  time
+    color: #999
+  @media only screen and (max-width: 560px)
+    width: 0%
+    time
+      display: none
+  @media only screen and (min-width: 561px) and (max-width: 650px)
+    width: 18%
+  @media only screen and (min-width: 651px) and (max-width: 900px)
+    width: 17%
 
 div.archive ul li.title
-  width: 66%
+  width: 64%
   a
     color: #333
     &.selected, &:hover
-      color: $color5
+      color: $color6
+  @media only screen and (max-width: 560px)
+    width: 80%
+  @media only screen and (min-width: 561px) and (max-width: 650px)
+    width: 62%
+  @media only screen and (min-width: 651px) and (max-width: 900px)
+    width: 63%
 
 div.archive ul li.category
   width: 20%
   text-align: right
-  a.color1
-    color: $color1
-  a.color2
-    color: $color2
-  a.color3
-    color: $color3
-  a.color4
-    color: $color4
+  a.categorycolor0
+    color: $categorycolor0
+  a.categorycolor1
+    color: $categorycolor1
+  a.categorycolor2
+    color: $categorycolor2
+  a.categorycolor3
+    color: $categorycolor3
   a
     &.selected, &:hover
-      color: $color5
+      color: $color6
 
 b, strong, th
   font-weight: $font-weight + 200
-
-time
-  color: #999
 
 a
   color: inherit
@@ -73,7 +86,7 @@ a
 article a
   color: $link-color
   &.selected, &:hover
-    color: $color5
+    color: $color6
 
 article header a, article footer a
   color: inherit
