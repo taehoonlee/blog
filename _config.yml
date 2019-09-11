@@ -19,6 +19,8 @@ category_names:
 comments:                    # embed disqus or isso comments
   disqus: "taehoonlee"
 
+google_analytics_id: "UA-147630756-1"
+
 plugins:
  - jekyll-feed
  - jekyll-default-layout
